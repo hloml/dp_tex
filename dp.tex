@@ -1,0 +1,217 @@
+\documentclass{bakalarka}[12pt]
+\usepackage[utf8]{inputenc} 
+\usepackage[czech]{babel}
+\usepackage{ae}
+\usepackage{fancyhdr}
+\usepackage[pdftex]{graphicx}
+\usepackage{enumerate}
+\usepackage[thinlines]{easytable}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{amsmath,amsfonts,amssymb} 
+\usepackage{graphicx}
+
+\newgeometry{left=3.5cm,right=2.5cm,bottom=0cm,top=2.5cm}
+%\documentclass[12pt]{extbook}
+%\usepackage[a4paper,inner=3.5cm,pdftex]{geometry}
+
+
+
+
+\author{Ladislav Hlom}	
+\title{Automatická klasifikace vícejazyčných dokumentů}
+\titlet{}
+\titlett{}
+\university{Západočeská univerzita v Plzni}
+\faculty{Fakulta aplikovaných věd}
+\department{Katedra informatiky a výpočetní techniky}
+\subject{Diplomová práce}
+\town{Plzeň}
+\begin{document}
+\pagenumbering{gobble}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\textit{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\textit{#1}}{}}
+\cfoot{\thepage}
+\lhead{\leftmark}
+\rhead{\rightmark}
+\maketitle
+
+\chapter*{Prohlášení}
+\thispagestyle{empty}
+Prohlašuji, že jsem diplomovou práci vypracoval samostatně a výhradně s~použitím citovaných pramenů.
+\vskip 1.5em
+V Plzni dne \today
+\vskip 0.7em
+\hskip 9cm Ladislav Hlom
+\chapter*{Abstract}
+\thispagestyle{empty}
+Cílem práce bylo ...
+\tableofcontents
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\textit{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\textit{#1}}{}}
+\cfoot{\thepage}
+\lhead{\leftmark}
+\rhead{\rightmark}
+\parskip 1em
+ \pagenumbering{arabic} 
+\chapter{Úvod}
+1.Prostudujte vybrané metody pro automatický překlad.\\\\
+2. Seznamte se se základními přístupy pro klasifikaci/kategorizaci
+textových dokumentů. Zaměřte se na metody klasifikace do více tříd.\\\\
+3. Analyzujte datové kolekce dodané od České tiskové kanceláře. Kolekce
+doplňte o alespoň dvě další volně dostupné v jiných jazycích.\\\\
+4. Na základě studie literatury navrhněte a implementujte dvě metody
+automatické klasifikace vícejazyčných dokumentů.\\\\
+5. Funkčnost metod otestujte na dostupných datech a zhodnoťte dosažené
+výsledky.\\\\
+6. Na základě dosažených výsledků navrhněte další rozšíření/vylepšení
+
+knizka pro klasifikaci. http://nlp.stanford.edu/IR-book/html/htmledition/irbook.html
+
+\chapter{Automatický překlad}
+
+
+Rule Based approach:
+ rule-based MT has two approaches: Interlingua and 
+transfer. Rule-Based MT Systems rely on different levels of linguistic rules for 
+translation. This MT research paradigm has been named rule-based MT due to 
+the use of linguistic rules of diverse natures. For instance, rules are used for 
+lexical transfer, morphology, syntactic an
+alysis, syntactic generation, etc. In 
+RBMT the translation process consists of: 
+-
+ Analyzing input text morphologically, syntactically and semantically. 
+-
+ Generating text via structural conversions based on internal structures. 
+Proceedings ICWIT 2012                                                                                      165 
+The steps mentioned above make use of a dictionary and a grammar, which must 
+be developed by linguists. This requirement is the main problem of RBMT as it 
+is a time-consuming process to collect a
+nd spell out this knowledge, frequently 
+referred as knowledge acquisition problem. It is not just very hard to develop 
+and maintain the rules in this type of system, but one is not guaranteed to get the 
+system to operate as well as before the addition of a new rule. RBMT systems 
+are large-scale rule based systems; wher
+eas their computational cost is high, 
+since they must implement all aspects 
+whether syntactic, semantic, structural 
+transfer etc. as rules [14]. 
+•
+Corpus-based approach: 
+Corpus-Based Machine Translation, also referred as 
+data driven machine translation, is an alternative approach for machine 
+translation to overcome the knowledge acquisition problem of rule-based 
+machine translation. There are two 
+types of CBMT Statistical Machine 
+Translation (SMT) and Example-Based Machine Translation (EBMT). Corpus-
+based MT automatically acquires the translation knowledge or models from 
+bilingual corpora. Since this approach has been designed to work on large sizes 
+of data, it has been named Corpus-Based MT ([17], [18], [16] and [15]). 
+•
+Hybride approach:
+ Some recent work has focused 
+on hybrid approaches that 
+combine the transfer approa
+ch with one of 
+the corpus–based 
+approaches. This 
+was designed to work with fewer amounts of resources and depend on the 
+learning and training of transfer rules.
+ The main idea in this approach is to 
+automatically learn syntactic transfer rules from limited amounts of word-
+aligned data. This data contains all the needed information for parsing, transfer, 
+and generation of the sentences ( [19] and [20]). The following section covers 
+part of the MT literature that gives details of specific systems for deriving the 
+appropriate translation us
+ing different approaches
+
+
+\chapter{Automatická klasifikace}
+
+
+\chapter{Použitá metoda}
+Dokumenty mohou být v rozdílném jazyce. Je tedy potřeba dokument nejprve přeložit a poté ho lze klasifikovat. Jako výchozí jazyk pro klasifikaci byla zvolena čeština. Nejprve tedy bude zjištěn výchozí jazyk dokumentu a v případě, že nebude v českém jazyce, pak do něho bude přeložen. Poté bude možné dokument klasifikovat. Klasifikátory musí být nejdříve natrénovány na trénovacích dokumentech a poté již mohou dokumenty klasifikovat do jedné z natrénovaných kategorií.
+
+\section{Přeložení dokumentu} 
+Dokumenty se mohou vyskytovat v různých jazycích. Očekávané jsou dokumenty v angličtině a němčině, které je nutné přeložit do češtiny. Pro přeložení budou použity alespoň dva různé nástroje. Bude ohodnocena kvalita překladu jednotlivých nástrojů a bude vyhodnoceno jak ovlivňuje kvalita překladu následnou klasifikaci. Pro překlad byly vybrány dva rozdílné nástroje - Moses, Google Translate.
+
+\subsection{Moses} 
+Moses je implementací statistického řešení strojového překladu. Jedná se o open-source projekt pod licencí LGPL. Mezi jeho výhody patří možnost bezplatného využití.
+
+\subsection{Google Translate}
+Google Translate je implementací statistického řešení strojového překladu.
+
+\subsection{Ohodnocení kvality překladu}
+V rámci práce bude zjištěn vliv kvality překladu na přesnost klasifikace. Pro tyto účely existuje několik možných metrik. Pro stanovení metriky je potřeba mít text k překladu a přeložený text, nejlépe s několika možnými variantami překladu. Pro stanovení metriky bude v práci použit česko-anglický korpus, který sice poskytuje pouze 1 variantu překladu. Ale pro získání informace o kvalitě překladu je to dostačující.
+
+\subsubsection{Bleu}
+http://homepages.inf.ed.ac.uk/pkoehn/publications/esslli-slides-day4.pdf
+
+\section{Klasifikace} 
+Pro klasifikaci byla zvolena možnost trénování s učitelem. Z klasifikačních metod byly zvoleny následující - Bayes, Maximální entropie, SVM.
+
+\subsection{Dokumenty ke klasifikaci}
+Data pro trénování a testování klasifikátorů poskytla Česká tisková kancelář (dále jen ČTK). Dodaná data se nachází v xml formátu a dále jsou k dispozici textové soubory. Textová data obsahují správné kategorie v názvu souboru a uvnitř souborů se nachází tisková zpráva. V xml formátu obsahují data mnoho atributů. Použité atributy jsou kategorie, která určuje do které kategorie dokument patří. Dalším polem je agentura, podle které lze zjistit v jakém jazyku je dokument. 
+Dalším je samotná tisková zpráva.
+
+\subsection{Nástroje ke klasifikaci}
+Jako programovací jazyk pro otestování řešení byla zvolena Java. Pro klasifikaci byla na základě doporučení zvolena knihovna Brainy.
+\subsubsection{Brainy}
+Jedná se o knihovnu v Javě pro klasifikaci, která pochází z naší fakulty. ...
+
+\subsection{Ohodnocení přesnosti klasifikace}
+http://dl.acm.org/citation.cfm?id=944974
+Pro ohodnocení přesnosti je použita metoda  F-measure. Ta se vypočte s použitím recall a precission. Při výpočtu musí být nejprve určeny následující hodnoty: \\\\
+TP (true positive) - počet správně zařazených dokumentů \\
+TN (true negative) - počet nesprávně zařazených dokumentů \\
+FN (false negative) - počet nesprávně nezařazených dokumentů \\\\
+Precission je zlomek výsledků, které jsou relevantní. \\ \\
+$precission = \dfrac{tp}{tp + fp}$   \\ \\
+Recall je zlomek výsledků, které jsou získány ze všech požadovaných.  \\ \\
+$recall = \dfrac{tp}{tp + fn}$   \\ \\
+Tradiční  F-measure je harmonický průměr precission a recall. \\ \\
+$F-measure = \dfrac{2 \cdot( precission \cdot recall )}{precission + recall}$
+
+    
+\subsection{Křížová validace}   
+Vstupní množina dat je rozdělena na podmnožiny. Jedna podmnožina slouží jako testovací množina, zbylé podmnožiny slouží jako trénovací množiny. Klasifikátor natrénuje model na trénovací množině a pomocí testovací množiny testuje přesnost a výkonnost tohoto modelu. Tento proces se několikrát opakuje, pokaždé s jinou podmnožinou tvořící trénovací a testovací množinu.
+
+\subsection{Metody klasifikace}
+Pro klasifikaci byly zvoleny následující varianty.
+
+\subsubsection{Class \& Complement}
+
+\subsubsection{Threshold}
+
+\section{Testovací program} 
+Program vytvořený pro otestování navrženého řešení. Cílem je umožnit otestovat řešení na xml datech a na dodaných textových dokumentech. Dále se nachází diagram programu viz obr ~\ref{overflow} spolu s popisem jednotlivých metod.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=140mm]{img/diagram_program.png}
+\caption{Diagram testovacího programu \label{overflow}}
+\end{figure}
+
+\noindent LoadAllDocuments - Metoda načte všechny soubory a uloží je do struktury pro další zpracování. 
+
+\noindent LoadXmlData - načte všechna XML data od ČTK a potřebné údaje si uloží spolu s jednotlivými zprávami. Poté rozdělí jednotlivé dokumenty podle jazyku. Pro jazyky které je potřeba přeložit připraví textový soubor k přeložení. Tento soubor je přeložen do češtiny externím programem.
+
+\noindent LoadTranslatedDocuments -  přeložené zprávy se nahrají ze souboru a aktualizují se záznamy jednotlivých dokumentů.
+
+\noindent CategoriesPreparation - z načtených dokumentů se získají všechny kategorie.
+
+\noindent RemoveCategoriesWithLowOccurences - odstraní se kategorie, které obsahují menší počet trénovacích dokumentů než je stanovená mez. Tyto kategorie jsou odstraněny také z dokumentů a pokud dokument již nepatří do žádné další kategorie, pak je vyhozen.
+
+\noindent CreateTrainingData - připraví data pro trénování. Odstraní ze zpráv html znaky a interpunkci.
+
+\noindent TestThreshold - natrénuje a otestuje klasifikátor metodou Threshold.
+
+\noindent TestClass - natrénuje a otestuje klasifikátor metodou Class \& Complement
+
+\noindent WriteResults - zapíše výsledky metriky do souboru.
+
+\appendix
+\bibliographystyle{csplainnat}
+\bibliography{bakalarka}
+\end{document}
